@@ -10,21 +10,20 @@ const loader = document.getElementById('loader');
 
 //let apiQuotes = [];
 
-// Show Loading
-function loading() {
+function showLoadingSpinner() {
     loader.hidden = false;
     quoteContainer.hidden = true;
 }
 
 // Hide Loading
-function complete() {
+function removeLoadingSpinner() {
     quoteContainer.hidden = false;
     loader.hidden = true;
 }
 
 //Show New Quote
 function newQuote() {
-    loading();
+    showLoadingSpinner();
     // Pick a random quote from localQuotes array. Change to apiQuotes if pulling for an API list.
     const quote = localQuotes[Math.floor(Math.random() * localQuotes.length)];
     // Check if Author field is blank and replace it with 'Unknown'
@@ -42,7 +41,7 @@ function newQuote() {
     }  
     // Set Quote, Hide Loader
     quoteText.textContent = quote.text;
-    complete();
+    removeLoadingSpinner();
 }
 
 // Get Quotes from API
